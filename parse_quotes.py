@@ -1,5 +1,9 @@
 import json
 
+def format_author(author):
+    # Convert ALL_CAPS to title case, but preserve words like 'of', 'the', etc.
+    return ' '.join([w.capitalize() if w.isupper() else w for w in author.split()])
+
 def parse_quotes():
     quotes = []
     quote_number = 1
@@ -34,11 +38,12 @@ def parse_quotes():
                 author_line = lines[i].strip()
                 if author_line.startswith('—'):
                     current_author = author_line[1:].strip()
+                    formatted_author = format_author(current_author)
                     quote = ' '.join([l for l in quote_lines if l])
                     quotes.append({
                         "n": quote_number,
                         "quote": quote,
-                        "author": current_author
+                        "author": formatted_author
                     })
                     quote_number += 1
                     quote_lines = []
