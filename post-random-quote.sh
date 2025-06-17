@@ -15,4 +15,4 @@ NOTE="\"$QUOTE\" —$AUTHOR"
 echo $NOTE
 
 GOBINPATH=($HOME/go/bin)
-# $GOBINPATH/noscl publish "$NOTE"
+$GOBINPATH/noscl publish "$NOTE"
