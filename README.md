@@ -2,6 +2,8 @@
 
 A bot that posts random quotes from ancient philosophers to Nostr. The quotes are sourced from various ancient texts and compiled into a JSON format.
 
+You can follow the bot on Nostr: `npub1sages7tvxdmmtu9gadt80dk2jzws767l30r6xntq39ffhrp0ytlsax9yar`
+
 ## Components
 
 - `quotes.json`: The main database of quotes, containing both the quote text and author information
