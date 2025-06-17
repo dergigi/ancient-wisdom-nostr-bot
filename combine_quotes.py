@@ -54,9 +54,9 @@ def combine_quotes():
     for i, quote in enumerate(all_quotes, 1):
         quote['n'] = i
     
-    # Save to quotes.json
+    # Save to quotes.json with proper UTF-8 encoding
     with open('quotes.json', 'w', encoding='utf-8') as f:
-        json.dump(all_quotes, f, indent=4)
+        json.dump(all_quotes, f, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":
     combine_quotes() 
