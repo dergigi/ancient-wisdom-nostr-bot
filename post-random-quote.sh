@@ -1,14 +1,18 @@
 #!/bin/bash
 
-MYDIR=$(dirname $(readlink -f $0))
+MYDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-NUMQ=$(cat $MYDIR/quotes.json | jq '. | length')
-RANDQ=$((1 + $RANDOM % $NUMQ))
+# Get a random number between 0 and the number of quotes
+RANDQ=$(cat $MYDIR/quotes.json | jq '. | length')
+RANDQ=$((RANDOM % RANDQ))
 
+# Get the quote and author
 QUOTE=$(cat $MYDIR/quotes.json | jq -r --arg i $RANDQ '.[$i|tonumber].quote')
+AUTHOR=$(cat $MYDIR/quotes.json | jq -r --arg i $RANDQ '.[$i|tonumber].author')
 
-NOTE="\"$QUOTE\""
+# Format the note with quote and author
+NOTE="\"$QUOTE\" —$AUTHOR"
 echo $NOTE
 
 GOBINPATH=($HOME/go/bin)
-$GOBINPATH/noscl publish "$NOTE"
+# $GOBINPATH/noscl publish "$NOTE"
